@@ -8,6 +8,9 @@ app.use(cors())
 
 const port = process.env.PORT || 3000
 
+// We invoke routes here
+app.use("/api", require("./routes"))
+
 app.listen(port, () => {
   console.log("Tu app está lista por http://localhost:" + port)
 })
