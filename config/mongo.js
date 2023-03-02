@@ -8,11 +8,11 @@ const dbConnect = () => {
       useUnifiedTopology: true,
     })
     .then(() => {
-      console.log("**CONEXIÓN CORRECTA***")
+      console.log("MONGOOSE INFORMA: **CONEXIÓN CORRECTA***")
     })
     .catch((err) => {
       if (err) {
-        console.log("***ERROR DE CONEXIÓN***")
+        console.log("MONGOOSE INFORMA: ***ERROR DE CONEXIÓN***")
       }
     })
 }
