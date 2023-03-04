@@ -1,6 +1,7 @@
 const multer = require("multer")
 
-//This is the Multer storage disk
+//This is the Multer storage disk. /storage takes files and saves them.
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const pathStorage = `${__dirname}/../storage`
@@ -15,6 +16,7 @@ const storage = multer.diskStorage({
   },
 })
 
+//This is a middleware who says where I save the file and what's the file name.
 const uploadMiddleware = multer({
   storage: storage,
 })
