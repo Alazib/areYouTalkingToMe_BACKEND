@@ -1,6 +1,6 @@
 const multer = require("multer")
 
-//This is the Multer storage disk. /storage takes files and saves them.
+//This is the Multer storage disk --> /storage takes files and saves them.
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
