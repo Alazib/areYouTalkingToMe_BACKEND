@@ -1,3 +1,4 @@
+const { matchedData } = require("express-validator")
 const { tracksModel } = require("../models")
 const { handleHttpError } = require("../utils/handleErrors")
 
@@ -14,7 +15,7 @@ const getItem = (req, res) => {}
 
 const createItem = async (req, res) => {
   try {
-    const { body } = req
+    const body = matchedData(req)
     const data = await tracksModel.create(body)
     res.send(data)
   } catch (e) {
