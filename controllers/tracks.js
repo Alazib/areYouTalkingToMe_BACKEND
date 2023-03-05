@@ -5,7 +5,16 @@ const getItems = async (req, res) => {
   res.send({ data })
 }
 
-const getItem = (req, res) => {}
+const getItem = async (req, res) => {
+  try {
+    req = matchedData(req)
+    const { _id } = req
+    const data = await tracksModel.findById(_id)
+    res.send(data)
+  } catch (e) {
+    handleHttpError(res, "ERROR_GET_ITEM")
+  }
+}
 
 const createItem = async (req, res) => {
   const { body } = req

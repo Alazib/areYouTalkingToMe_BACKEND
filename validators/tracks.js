@@ -17,4 +17,9 @@ const validatorCreateItem = [
   (req, res, next) => validateResults(req, res, next),
 ]
 
-module.exports = validatorCreateItem
+const validatorGetItem = [
+  check("mediaId").exists().notEmpty().isMongoId(),
+  (req, res, next) => validateResults(req, res, next),
+]
+
+module.exports = { validatorCreateItem, validatorGetItem }
