@@ -19,14 +19,24 @@ const getItem = async (req, res) => {
 }
 
 const createItem = async (req, res) => {
-  const { body } = req
-
-  const data = await tracksModel.create(body)
-
-  res.send(data)
+  try {
+    const body = matchedData(req)
+    const data = await tracksModel.create(body)
+    res.send({ data })
+  } catch (e) {
+    handleHttpError(res, "ERROR_CREATE_ITEM")
+  }
 }
 
-const updateItem = (req, res) => {}
+const updateItem = async (req, res) => {
+  try {
+    const { id, ...body } = matchedData(req)
+    const data = await tracksModel.findOneAndUpdate(id, body)
+    res.send({ data })
+  } catch (e) {
+    handleHttpError(res, "ERROR_UPDATING_ITEMS")
+  }
+}
 
 const deleteItem = (req, res) => {}
 
