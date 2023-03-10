@@ -38,7 +38,17 @@ const updateItem = async (req, res) => {
   }
 }
 
-const deleteItem = (req, res) => {}
+const deleteItem = async (req, res) => {
+  try {
+    req = matchedData(req)
+    const { id } = req
+    console.log(id)
+    const data = await tracksModel.deleteOne({ _id: id })
+    res.send({ data })
+  } catch (e) {
+    handleHttpError(res, "ERROR_DELETE_ITEM")
+  }
+}
 
 module.exports = {
   getItems,
