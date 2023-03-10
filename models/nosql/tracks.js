@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const mongooseSoftDelete = require("mongoose-delete")
 
 const TracksScheme = new mongoose.Schema(
   {
@@ -43,5 +44,8 @@ const TracksScheme = new mongoose.Schema(
     versionKey: false,
   }
 )
+
+//Implmente mongoose-delete plugin & overrides native methods of Mongoose:
+TracksScheme.plugin(mongooseSoftDelete, { overrideMethods: "all" })
 
 module.exports = mongoose.model("tracks", TracksScheme)
