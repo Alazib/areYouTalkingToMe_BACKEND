@@ -1,9 +1,28 @@
 const { storageModel } = require("../models")
+const { matchedData } = require("express-validator")
+const { handleHttpError } = require("../utils/handleErrors")
+
 const PUBLIC_URL = process.env.PUBLIC_URL
 
-const getItems = async (req, res) => {}
+const getItems = async (req, res) => {
+  try {
+    const data = await storageModel.find({})
+    res.send({ data })
+  } catch (e) {
+    handleHttpError(res, "ERROR_GET_ITEMS")
+  }
+}
 
-const getItem = (req, res) => {}
+const getItem = async (req, res) => {
+  try {
+    req = matchedData(req)
+    const { id } = req
+    const data = await storageModel.findById(id)
+    res.send({ data })
+  } catch (e) {
+    handleHttpError(res, "ERROR_GET_ITEM")
+  }
+}
 
 const createItem = async (req, res) => {
   const { file } = req
