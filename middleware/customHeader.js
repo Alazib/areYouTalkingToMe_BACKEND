@@ -7,11 +7,9 @@ const customHeader = (req, res, next) => {
       res.status(403)
       res.send({ error: "API_KEY_NO_ES_CORRECTA" })
     }
-
-    next()
   } catch (e) {
     res.status(403)
-    res.send({ error: "ALGO OCURRIÓN EN EL CUSTOM HEADER" })
+    res.send({ error: "ALGO OCURRIÓ EN EL CUSTOM HEADER" })
   }
 }
 
