@@ -45,7 +45,7 @@ const TracksScheme = new mongoose.Schema(
   }
 )
 
-//Implmente mongoose-delete plugin & overrides native methods of Mongoose:
+//Implement mongoose-delete plugin & overrides native methods of Mongoose:
 TracksScheme.plugin(mongooseSoftDelete, { overrideMethods: "all" })
 
 module.exports = mongoose.model("tracks", TracksScheme)
